@@ -5,18 +5,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule.forRoot([
+      { path: 'landingPage', component: LandingPageComponent },
+      { path: '',   redirectTo: 'landingPage', pathMatch: 'full'},
+      { path: '**', redirectTo: 'landingPage', pathMatch: 'full'}
+    ]),
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
