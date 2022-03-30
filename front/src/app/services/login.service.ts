@@ -10,7 +10,6 @@ export class LoginService {
   constructor(private httpClient : HttpClient) { }
 
   register(user : User){
-    console.log("aaaa")
       return this.httpClient.post<User>("http://localhost:1026/users/addUser", user).subscribe((value)=>{
         console.log(user);
       }, (error)=>{
