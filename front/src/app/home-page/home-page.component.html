@@ -1,0 +1,83 @@
+<div id="vehicle-details-modal">
+    <div class="modal-content">
+        <div class="header-modal"><div class="close" (click)="closeCarDetailsModal($event)">+</div></div>
+        <div class="img-wrapper">
+            <img class="car-galery" src="../../assets/images/tesla2.jpg">
+        </div>
+        <div class="car-description">
+            <span class="row">
+                <span class="attribute-key"> Model</span>
+                <span class="attribute-value"> Tesla serie 3</span>
+            </span><hr/>
+            <span class="row">
+                <span class="attribute-key"> Car Details</span>
+                <span class="attribute-value"> Tesla serie 3</span>
+            </span><hr/>
+            <span class="row">
+                <span class="attribute-key"> Price per day</span>
+                <span class="attribute-value"> 50</span>
+            </span><hr/>
+            <span class="row">
+                <span class="attribute-key"> Address</span>
+                <span class="attribute-value"> Trifkovicev trg</span>
+            </span><hr/>
+            <div class="btn-rent-wrapper"><button class="btn-rent">Rent</button></div>
+        </div>
+    </div>
+</div>
+
+<div class="home-page">
+    <div class="cover-photo">
+        <img class="img" src="../../assets/images/cover5.jpg" />
+    </div>
+    <navbar></navbar> 
+    <div class="body">
+        <div class="left-side">
+            <div class="search-field-wrapper">
+                <input id="search-field" type="text" placeholder="Search cars"><br/>
+                <div class="title-wrapper">
+                    <span class="vl"></span>
+                    <h2>Available cars:</h2>
+                </div>
+            </div>
+            <div class="cars-table">
+                <div class="vehicle-card">
+                    <div class="img-div">
+                        <a class="link-light item"><img class="img-class" src="../../assets/images/tesla.jpg"/></a>
+                    </div>
+                    <div class="vehicle-details" (click)="showCarDetailsModal($event)">
+                        <h2><a class="link-light item"> Tesla </a></h2>
+                        <label><a class="link-light item"> Novi Sad </a></label>
+                        <label><a class="link-light item"> Trifkovicev trg 6 </a></label>
+                        <div class="btn-wrap"><button class="btn"><i class="fas fa-plus" (click)="showCarDetailsModal($event)"></i> &nbsp; Details</button></div>
+                    </div>
+                </div>
+                <div class="vehicle-card">
+                    <div class="img-div">
+                        <a class="link-light item"><img class="img-class" src="../../assets/images/tesla.jpg"/></a>
+                    </div>
+                    <div class="vehicle-details">
+                        <h2><a class="link-light item"> Tesla </a></h2>
+                        <label><a class="link-light item"> Novi Sad </a></label>
+                        <label><a class="link-light item"> Trifkovicev trg 6 </a></label>
+                        <div class="btn-wrap"><button class="btn"><i class="fas fa-plus"></i> &nbsp; Details</button></div>
+                    </div>
+                </div>
+                <div class="vehicle-card">
+                    <div class="img-div">
+                        <a class="link-light item"><img class="img-class" src="../../assets/images/tesla.jpg"/></a>
+                    </div>
+                    <div class="vehicle-details">
+                        <h2><a class="link-light item"> Tesla </a></h2>
+                        <label><a class="link-light item"> Novi Sad </a></label>
+                        <label><a class="link-light item"> Trifkovicev trg 6 </a></label>
+                        <div class="btn-wrap"><button class="btn"><i class="fas fa-plus"></i> &nbsp; Details</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-side">
+            <img class="map" src="../../assets/images/map.jpg">
+        </div>
+    </div>   
+</div>

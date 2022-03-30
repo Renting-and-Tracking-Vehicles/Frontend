@@ -7,11 +7,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RouterModule } from '@angular/router';
+import { HomePageComponent } from './home-page/home-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    HomePageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +23,7 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     MatButtonModule,
     RouterModule.forRoot([
+      { path: 'homePage', component: HomePageComponent },
       { path: 'landingPage', component: LandingPageComponent },
       { path: '',   redirectTo: 'landingPage', pathMatch: 'full'},
       { path: '**', redirectTo: 'landingPage', pathMatch: 'full'}
