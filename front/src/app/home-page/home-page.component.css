@@ -20,9 +20,13 @@
     background-color: rgb(255, 255, 255);
 }
 .left-side{
-    width: 60%;
+    width: 70%;
     align-items: center;
     justify-content: center;
+}
+.right-side{
+    width: 30%;
+    padding-top: 7%;
 }
 .search-field-wrapper{
     margin: 10% 25%;
@@ -67,8 +71,7 @@ h2{
     display: flex;
     flex-direction: column;
     flex-grow: 0;
-    width: 42% !important;
-
+    width: 43% !important;
     height: 65vh;
     background-color: rgb(177, 190, 202);
     margin: 15px;
@@ -200,3 +203,24 @@ h2{
     cursor: pointer;
     color: #a09898;
   }
+
+  .rented-car-details{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 450px;
+    background-color: rgb(248, 244, 244);
+    margin: 5% 20%;
+    margin-left: 26% !important;
+    border-radius: 10px;
+  }
+  .rented-car-gallery{
+    display: inherit;
+    align-self: center;
+    width: 200px;
+    margin: 1% 35%;
+    height: 100%;
+}
+.rented-car-details hr{
+    margin: 4% 18%;
+}
