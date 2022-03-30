@@ -1,0 +1,36 @@
+.home-page{
+    display: flex;
+    flex-direction: column;
+}
+.cover-image{
+    width: 100%;
+    height: 300px;
+}
+.img{
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 50vh;
+}
+.body{
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(228, 236, 241);
+}
+.page {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 50px;
+    padding-bottom: 150px;
+  }
+  h1 {
+    margin-bottom: 40px;
+    text-align: left;
+  }
+  .table-rentings, .table-striped{   
+    color: #1e2a36;
+    text-align: center;
+    margin-top: 10px ;
+  }
