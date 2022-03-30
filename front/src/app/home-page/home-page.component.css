@@ -1,0 +1,226 @@
+.home-page{
+    display: flex;
+    flex-direction: column;
+}
+.cover-image{
+    width: 100%;
+    height: 300px;
+}
+.img{
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 50vh;
+}
+.body{
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+}
+.left-side{
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+}
+.right-side{
+    width: 30%;
+    padding-top: 7%;
+}
+.search-field-wrapper{
+    margin: 10% 25%;
+    margin-bottom: 2% !important;
+    margin-top: 11% !important;
+}
+#search-field{
+    width: 100%;
+    border-radius:1.5rem;
+    height: 40px;  
+    margin-left: 1%;
+    text-indent: 10px;
+}
+h2{
+    margin-left: 3%;
+}
+.cars-table{
+    margin: 0% 25%;
+}
+.map{
+    margin: 25% 10%;
+    margin-top: 45%;
+    width: 80%;
+}
+.title-wrapper{
+    display: flex;
+    flex-direction: row;
+    margin-left: 3%;
+    margin-top: 5%;
+    justify-content: baseline;
+}
+.vl{
+    border-left: 6px solid #f3ce13;
+    height: 30px;
+}
+.cars-table{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.vehicle-card{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0;
+    width: 43% !important;
+    height: 65vh;
+    background-color: rgb(177, 190, 202);
+    margin: 15px;
+}
+.img-div{
+    height: 60%;
+}
+.img-class{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+
+.vehicle-details{
+    display: flex;
+    flex-direction: column;
+    color: whitesmoke;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.btn-wrap{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+.btn{
+    width: 100%;
+    color: rgb(52, 150, 189);
+    background-color: rgb(255, 255, 255);
+}
+
+
+#vehicle-details-modal{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    width: 35%;
+    height: 80%;
+    background-color: rgb(245, 244, 244);
+    margin: 5% 30%;
+    margin-left: 18% !important;
+    border-radius: 10px;
+  }
+  .header-modal{
+    width: 100%;
+    height: 5%;
+    font-size: 30px;
+    color: rgb(238, 220, 55);
+    justify-self: flex-end;
+  }
+  .modal-content{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+  }
+  .img-wrapper{
+      display: inherit;
+      width: 100%;
+      margin: 5%;
+      height: 30%;
+      justify-content: center;
+  }
+  .car-gallery{
+      display: inherit;
+      width: 200px;
+      height: 100%;
+      margin-left: 10%;
+  }
+  .car-description{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  }
+  .row{
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      margin-left: 20%;
+      height: 15%;
+  }
+  .attribute-key{
+      width: 30% !important;
+      margin-left: 1%;
+  }
+  .attribute-value{
+    width: 60%;
+    margin-left: 2%;
+  }
+  .modal-content hr{
+      width: 60%;
+      align-self: center;
+  }
+  .btn-rent-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    height: 20%;
+    margin-right: 20%;
+    align-items: center;
+  }
+  .btn-rent{
+    width: 25%;
+    height: 2em;
+    color: black;
+    font-family: sans-serif;
+    background-color: #dfd262;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 5%;
+  } 
+  .close{
+    position: absolute;
+    top:10px;
+    right: 3%;
+    font-size: 40px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    color: #797575;
+  }
+  .close:hover{
+    position: absolute;
+    top:10px;
+    right: 3%;
+    font-size: 50px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    color: #a09898;
+  }
+
+  .rented-car-details{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 450px;
+    background-color: rgb(248, 244, 244);
+    margin: 5% 20%;
+    margin-left: 26% !important;
+    border-radius: 10px;
+  }
+  .rented-car-gallery{
+    display: inherit;
+    align-self: center;
+    width: 200px;
+    margin: 1% 35%;
+    height: 100%;
+}
+.rented-car-details hr{
+    margin: 4% 18%;
+}
