@@ -22,7 +22,8 @@ export class RentHistoryComponent implements OnInit {
             city: "Novi Sad"
         },
         durationInDays: 2,
-        totalPrice: 1200
+        totalPrice: 1200,
+        images: []
     },
     {
         vehicleModel: "Audi e tron",
@@ -37,7 +38,8 @@ export class RentHistoryComponent implements OnInit {
             city: "Novi Sad"
         },
         durationInDays: 3,
-        totalPrice: 1500
+        totalPrice: 1500,
+        images: []
     },
     {
         vehicleModel: "Tesla serie 4",
@@ -52,7 +54,8 @@ export class RentHistoryComponent implements OnInit {
             city: "Novi Sad"
         },
         durationInDays: 5,
-        totalPrice: 2500
+        totalPrice: 2500,
+        images: []
     },
   ];  
 

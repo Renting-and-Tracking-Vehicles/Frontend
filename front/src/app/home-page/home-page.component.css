@@ -131,10 +131,10 @@ h2{
     display: none;
     flex-direction: column;
     position: fixed;
-    width: 35%;
-    height: 80%;
+    width: 30%;
+    height: 60%;
     background-color: rgb(245, 244, 244);
-    margin: 5% 30%;
+    margin: 10% 30%;
     margin-left: 18% !important;
     border-radius: 10px;
   }
@@ -198,7 +198,7 @@ h2{
   }
   .btn-rent{
     width: 25%;
-    height: 2em;
+    height: 2.5em;
     color: black;
     font-family: sans-serif;
     background-color: #dfd262;

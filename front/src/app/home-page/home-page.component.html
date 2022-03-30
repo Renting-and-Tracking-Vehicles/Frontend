@@ -74,19 +74,19 @@
                 <div class="car-description">
                     <span class="row">
                         <span class="attribute-key"> Model</span>
-                        <span class="attribute-value"> {{vehicle.model}}</span>
+                        <span class="attribute-value"> {{vehicle.vehicleModel}}</span>
                     </span><hr/>
                     <span class="row">
                         <span class="attribute-key"> Start address</span>
-                        <span class="attribute-value"> {{vehicle.garage.address.streetName}} {{vehicle.garage.address.streetNumber}}</span>
+                        <span class="attribute-value"> {{vehicle.startAddress.streetName}} {{vehicle.startAddress.streetNumber}}</span>
                     </span><hr/>
                     <span class="row">
                         <span class="attribute-key"> Current duration</span>
-                        <span class="attribute-value"> {{vehicle.rentedPeriodInDays}} </span>
+                        <span class="attribute-value"> {{vehicle.durationInDays}} </span>
                     </span><hr/>
                     <span class="row">
                         <span class="attribute-key"> Current coast</span>
-                        <span class="attribute-value"> {{vehicle.pricePerDay}} </span>
+                        <span class="attribute-value"> {{vehicle.totalPrice}} </span>
                     </span><hr/>
                     <div class="btn-rent-wrapper"><button class="btn-rent">Finish rent</button></div>
                 </div>

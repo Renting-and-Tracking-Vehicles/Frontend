@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Renting } from '../model/renting.model';
 import { Vehicle } from '../model/vehicle.model';
 
 @Component({
@@ -48,8 +49,23 @@ export class HomePageComponent implements OnInit {
         images: ["../../assets/images/tesla3.jpg"]
     },
   ];
-  rentedVehicles: Vehicle[] = [
-  
+  rentedVehicles: Renting[] = [
+    /*{
+        vehicleModel: "Tesla serie 3",
+        startAddress: {
+            streetName: "Trifkovicev trg",
+            streetNumber: "6",
+            city: "Novi Sad"
+        },
+        endAddress: {
+            streetName: "Trifkovicev trg",
+            streetNumber: "6",
+            city: "Novi Sad"
+        },
+        durationInDays: 2,
+        totalPrice: 1200,
+        images: ["../../assets/images/tesla3.jpg"]
+    }*/
   ];
   constructor() {}
 
