@@ -32,11 +32,14 @@
         <img class="img" src="../../assets/images/cover5.jpg" />
     </div>
     <navbar></navbar> 
+    <span class="search-and-add-wrap">
+        <input id="search-field" type="text" placeholder="Search cars"><br/>
+        <button class="add-btn"><i class="fas fa-plus"></i> Add new vehicle</button>
+    </span>
     <div class="body">
         <!-- List of available vehicles, if there is no rented vehicle for logged user -->
         <div class="left-side" *ngIf="rentedVehicles.length === 0">
             <div class="search-field-wrapper">
-                <input id="search-field" type="text" placeholder="Search cars"><br/>
                 <div class="title-wrapper">
                     <span class="vl"></span>
                     <h2>Available cars:</h2>
@@ -45,12 +48,12 @@
             <div class="cars-table">
                 <div class="vehicle-card" *ngFor="let vehicle of availableVehicles">
                     <div class="img-div">
-                        <a class="link-light item"><img class="img-class" src="../../assets/images/tesla.jpg"/></a>
+                        <a class="link-light item"><img class="img-class" src={{vehicle.images[0]}}/></a>
                     </div>
                     <div class="vehicle-details" (click)="showCarDetailsModal($event, vehicle)">
                         <h2><a class="link-light item"> {{vehicle.model}} </a></h2>
-                        <label><a class="link-light item"> {{vehicle.garage.address.city}} </a></label>
-                        <label><a class="link-light item"> {{vehicle.garage.address.streetName}} {{vehicle.garage.address.streetNumber}} </a></label>
+                        <h3><a class="link-light item"> {{vehicle.garage.address.city}} </a></h3>
+                        <h3><a class="link-light item"> {{vehicle.garage.address.streetName}} {{vehicle.garage.address.streetNumber}} </a></h3>
                         <div class="btn-wrap"><button class="btn"><i class="fas fa-plus" (click)="showCarDetailsModal($event, vehicle)"></i> &nbsp; Details</button></div>
                     </div>
                 </div>
@@ -59,7 +62,6 @@
         <!-- List of rented vehicles, if there is at least one rented vehicle for logged user -->
         <div class="left-side" *ngIf="rentedVehicles.length > 0">
             <div class="search-field-wrapper">
-                <input id="search-field" type="text" placeholder="Search cars"><br/>
                 <div class="title-wrapper">
                     <span class="vl"></span>
                     <h2>Rented cars:</h2>
@@ -90,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <!-- Google map-->
+        <!-- Google map placeholder-->
         <div class="right-side">
             <img class="map" src="../../assets/images/map.jpg">
         </div>

@@ -45,24 +45,11 @@ export class HomePageComponent implements OnInit {
               city: "Beograd"
             }
         },
-        images: ["../../assets/images/tesla2.jpg"]
+        images: ["../../assets/images/tesla3.jpg"]
     },
   ];
   rentedVehicles: Vehicle[] = [
-    {
-        model: "Tesla serie 3",
-        description: "Electric car",
-        pricePerDay: 450,
-        garage: {
-            address: {
-              streetName: "Hadzi Ruvimova",
-              streetNumber: "8",
-              city: "Beograd"
-            }
-        },
-        images: ["../../assets/images/tesla2.jpg"],
-        rentedPeriodInDays: 2
-    },
+  
   ];
   constructor() {}
 
