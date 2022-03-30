@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MaterialModule } from 'src/material/material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+
 import { ShareModule } from 'ngx-sharebuttons';
 import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawesome';
 
@@ -21,11 +23,22 @@ import { RegisterComponent } from './register/register.component';
 import { LoginService } from './services/login.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { RouterModule } from '@angular/router';
+import { HomePageComponent } from './home-page/home-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RentHistoryComponent } from './rent-history/rent-history.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent
+    LandingPageComponent,
+    HomePageComponent,
+    NavbarComponent,
+    RentHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +55,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     FontAwesomeModule,
     RouterModule,
     HttpClientModule
-
   ],
   providers: [LoginService],
+    MaterialModule,
+    RouterModule.forRoot([
+      { path: 'history', component: RentHistoryComponent },
+      { path: 'homePage', component: HomePageComponent },
+      { path: 'landingPage', component: LandingPageComponent },
+      { path: '',   redirectTo: 'landingPage', pathMatch: 'full'},
+      { path: '**', redirectTo: 'landingPage', pathMatch: 'full'}
+    ]),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
