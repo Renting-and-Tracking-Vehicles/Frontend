@@ -24,8 +24,8 @@ export class HomePageComponent implements OnInit {
   };
   availableVehicles: Vehicle[] = [];
   rentedVehicles: Renting[] = [
-  /* {
-        vehicleModel: "Tesla serie 3",
+   /*{
+      vehicleModel: "Tesla serie 3",
         startAddress: {
             streetName: "Trifkovicev trg",
             streetNumber: "6",
