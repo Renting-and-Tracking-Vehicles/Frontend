@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Renting } from '../model/renting.model';
+import { RentingHistory } from '../model/renting-history.model';
 
 @Component({
   selector: 'app-rent-history',
@@ -8,7 +8,7 @@ import { Renting } from '../model/renting.model';
 })
 export class RentHistoryComponent implements OnInit {
 
-  rentingHistory: Renting[] = [
+  rentingHistory: RentingHistory[] = [
     {
         vehicleModel: "Tesla serie 3",
         startAddress: {
