@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { RegisterComponent } from './register/register.component';
 import { LoginService } from './services/login.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -45,6 +46,7 @@ import { RentHistoryComponent } from './rent-history/rent-history.component';
     MatFormFieldModule,
     FontAwesomeModule,
     HttpClientModule,
+    NgxPaginationModule
 
   ],
   providers: [LoginService],
