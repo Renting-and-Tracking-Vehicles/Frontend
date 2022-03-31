@@ -7,7 +7,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
     hide: boolean = false;
     loginForm = new FormGroup({
     email : new FormControl('',[Validators.required, Validators.email]),
@@ -15,14 +14,11 @@ export class LoginComponent implements OnInit {
   })
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onLogin(){
     console.log("test123")
   }
-
-
 }
 
 

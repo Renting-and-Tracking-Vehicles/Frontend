@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Renting } from '../model/renting.model';
 import { Vehicle } from '../model/vehicle.model';
+import { VehicleService } from '../services/vehicle.service';
 
 @Component({
   selector: 'app-home-page',
@@ -20,53 +22,34 @@ export class HomePageComponent implements OnInit {
     },
     images: ["../../assets/images/tesla2.jpg"]
   };
-  availableVehicles: Vehicle[] = [
-    {
-        model: "Tesla serie 4",
-        description: "Electric car",
-        pricePerDay: 500,
-        garage: {
-            address: {
-              streetName: "Trifkovicev trg",
-              streetNumber: "6",
-              city: "Novi Sad"
-            }
+  availableVehicles: Vehicle[] = [];
+  rentedVehicles: Renting[] = [
+   /* {
+        vehicleModel: "Tesla serie 3",
+        startAddress: {
+            streetName: "Trifkovicev trg",
+            streetNumber: "6",
+            city: "Novi Sad"
         },
-        images: ["../../assets/images/tesla2.jpg"]
-    },
-    {
-        model: "Tesla serie 3",
-        description: "Electric car",
-        pricePerDay: 450,
-        garage: {
-            address: {
-              streetName: "Hadzi Ruvimova",
-              streetNumber: "8",
-              city: "Beograd"
-            }
+        endAddress: {
+            streetName: "Trifkovicev trg",
+            streetNumber: "6",
+            city: "Novi Sad"
         },
-        images: ["../../assets/images/tesla2.jpg"]
-    },
+        durationInDays: 2,
+        totalPrice: 1200,
+        images: ["../../assets/images/tesla3.jpg"]
+    }*/
   ];
-  rentedVehicles: Vehicle[] = [
-    {
-        model: "Tesla serie 3",
-        description: "Electric car",
-        pricePerDay: 450,
-        garage: {
-            address: {
-              streetName: "Hadzi Ruvimova",
-              streetNumber: "8",
-              city: "Beograd"
-            }
-        },
-        images: ["../../assets/images/tesla2.jpg"],
-        rentedPeriodInDays: 2
-    },
-  ];
-  constructor() {}
+  constructor(private vehicleService: VehicleService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+      this.vehicleService.getAllAvailableCars().subscribe(
+        data => {
+            this.availableVehicles = data;
+          }
+      );
+  }
 
   showCarDetailsModal(event: MouseEvent, vehicle: Vehicle): void {
     event.preventDefault();

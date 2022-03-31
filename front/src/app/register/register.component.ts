@@ -10,15 +10,13 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-    userModel: User={
-      email: '',
-      password: '',
-      name: '',
-      surname: '',
-      phone: ''
+    userModel: User = {
+        email: '',
+        password: '',
+        name: '',
+        surname: '',
+        phone: ''
     };
-
 
     hide: boolean = false;
     registerForm = new FormGroup({
@@ -31,11 +29,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(public loginService : LoginService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onRegister(){
-    console.log(this.userModel)
     this.loginService.register(this.userModel);
   }
 }
