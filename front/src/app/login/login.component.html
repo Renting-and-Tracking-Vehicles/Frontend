@@ -11,6 +11,7 @@
             <mat-label>Email</mat-label>
             <input
               formControlName="email"
+              autocomplete="off"
               matInput
               placeholder="Enter email address" required
             />
@@ -27,7 +28,7 @@
           
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Password</mat-label>
-            <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
+            <input formControlName="password" autocomplete="off" matInput [type]=" hide ? 'password' : 'text'" required />
             <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
             [attr.aria-pressed]="hide">
             <mat-icon>

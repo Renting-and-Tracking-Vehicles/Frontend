@@ -43,10 +43,18 @@ export class HomePageComponent implements OnInit {
   ];
   constructor(private vehicleService: VehicleService) {}
 
+  //Pagination
+  totalLength:any;
+  page:number=1;
+
+
   ngOnInit(): void {
       this.vehicleService.getAllAvailableCars().subscribe(
         data => {
             this.availableVehicles = data;
+
+            this.totalLength = this.availableVehicles.length;
+            console.log(this.totalLength);
           }
       );
   }

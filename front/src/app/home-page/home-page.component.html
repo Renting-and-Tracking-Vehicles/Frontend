@@ -46,7 +46,8 @@
                 </div>
             </div>
             <div class="cars-table">
-                <div class="vehicle-card" *ngFor="let vehicle of availableVehicles">
+                <div class="vehicle-card" *ngFor="let vehicle of availableVehicles |
+                 paginate: { itemsPerPage: 2, currentPage: page, totalItems:totalLength }">
                     <div class="img-div">
                         <a class="link-light item"><img class="img-class" src={{vehicle.images[0]}}/></a>
                     </div>
@@ -58,7 +59,9 @@
                     </div>
                 </div>
             </div>
+            <pagination-controls class="pagination-class" (pageChange)="page = $event"></pagination-controls>
         </div>
+        
         <!-- List of rented vehicles, if there is at least one rented vehicle for logged user -->
         <div class="left-side" *ngIf="rentedVehicles.length > 0">
             <div class="search-field-wrapper">
