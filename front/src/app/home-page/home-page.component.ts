@@ -24,8 +24,8 @@ export class HomePageComponent implements OnInit {
   };
   availableVehicles: Vehicle[] = [];
   rentedVehicles: Renting[] = [
-   /* {
-        vehicleModel: "Tesla serie 3",
+   /*{
+      vehicleModel: "Tesla serie 3",
         startAddress: {
             streetName: "Trifkovicev trg",
             streetNumber: "6",
@@ -38,7 +38,7 @@ export class HomePageComponent implements OnInit {
         },
         durationInDays: 2,
         totalPrice: 1200,
-        images: ["../../assets/images/tesla3.jpg"]
+        images: ["https://vehicle-images-levi9.s3.amazonaws.com/images/ix.jpg"]
     }*/
   ];
   constructor(private vehicleService: VehicleService) {}
