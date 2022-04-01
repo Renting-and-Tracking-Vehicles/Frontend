@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
+import { RentingHistory } from '../model/renting-history.model';
 import { Renting } from '../model/renting.model';
 import { Vehicle } from '../model/vehicle.model';
 import { VehicleService } from '../services/vehicle.service';
@@ -20,12 +22,14 @@ export class HomePageComponent implements OnInit {
           city: "Novi Sad"
         }
     },
-    images: ["../../assets/images/tesla2.jpg"]
+    images: ["https://vehicle-images-levi9.s3.amazonaws.com/images/ix.jpg"]
   };
+  searchFilter: string = '';
+  filteredVehicles: Vehicle[] = [];
   availableVehicles: Vehicle[] = [];
-  rentedVehicles: Renting[] = [
-   /*{
-      vehicleModel: "Tesla serie 3",
+  rentedVehicles: RentingHistory[] = [
+  /* {
+        vehicleModel: "Tesla serie 3",
         startAddress: {
             streetName: "Trifkovicev trg",
             streetNumber: "6",
@@ -49,25 +53,54 @@ export class HomePageComponent implements OnInit {
 
 
   ngOnInit(): void {
-      this.vehicleService.getAllAvailableCars().subscribe(
-        data => {
-            this.availableVehicles = data;
+      this.fetchAvailableCars();
+  }
 
-            this.totalLength = this.availableVehicles.length;
-            console.log(this.totalLength);
-          }
-      );
+    private fetchAvailableCars() {
+        this.vehicleService.getAllAvailableCars().subscribe(
+            data => {
+                this.availableVehicles = data;
+            }
+        );
+    }
+
+  rentCar(vehicle: Vehicle): void {
+     let renting = new Renting(vehicle, 1);
+     this.vehicleService.rentACar(renting);
+     Swal.fire({
+        title: 'Success!',
+        text: 'Vehicle successfully rented!',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        position: 'top-right'
+      });
+      this.fetchAvailableCars();
+     (document.querySelector('#vehicle-details-modal') as HTMLElement).style.display = 'none';
+  }
+
+  searchVehicles(): void {
+      this.filteredVehicles = [];
+      for(let vehicle of this.availableVehicles)
+          if(vehicle.model.toLowerCase().indexOf(this.searchFilter) !== -1 || vehicle.garage.address.streetName.toLowerCase().indexOf(this.searchFilter) !== -1)
+            this.filteredVehicles.push(vehicle);
+
+      this.availableVehicles = this.filteredVehicles;   
+  }
+
+  onFocusLost($event: Event) : void {
+    this.searchFilter = "";
+    this.fetchAvailableCars();
   }
 
   showCarDetailsModal(event: MouseEvent, vehicle: Vehicle): void {
     event.preventDefault();
     this.selectedVehicle = vehicle;
     (document.querySelector('#vehicle-details-modal') as HTMLElement).style.display = 'flex';
+    this.fetchAvailableCars();
   }
 
   closeCarDetailsModal(event: MouseEvent): void {
     event.preventDefault();
     (document.querySelector('#vehicle-details-modal') as HTMLElement).style.display = 'none';
   }
-
 }

@@ -1,6 +1,7 @@
 import { Garage } from "./garage.model";
 
 export class Vehicle {
+    public id?: number;
     public model: string;
     public description: string;
     public pricePerDay: number;

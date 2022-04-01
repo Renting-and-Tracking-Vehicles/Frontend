@@ -22,7 +22,7 @@
                 <span class="attribute-key"> Address</span>
                 <span class="attribute-value"> {{selectedVehicle.garage.address.streetName}} {{selectedVehicle.garage.address.streetNumber}} </span>
             </span><hr/>
-            <div class="btn-rent-wrapper"><button class="btn-rent">Rent</button></div>
+            <div class="btn-rent-wrapper"><button class="btn-rent" (click)="rentCar(selectedVehicle)">Rent</button></div>
         </div>
     </div>
 </div>
@@ -33,7 +33,7 @@
     </div>
     <navbar></navbar> 
     <span class="search-and-add-wrap">
-        <input id="search-field" type="text" placeholder="Search cars"><br/>
+        <input id="search-field" type="text" placeholder="Search cars" [(ngModel)]="searchFilter" (keyup.enter)="searchVehicles()" (focusout)="onFocusLost($event)"><br/>
         <button class="add-btn"><i class="fas fa-plus"></i> Add new vehicle</button>
     </span>
     <div class="body">

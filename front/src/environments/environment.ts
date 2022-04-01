@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   baseUrlVehicle: 'http://localhost:1025/vehicle/',
+  baseUrlRenting: 'http://localhost:1025/renting/',
 };
 
 /*

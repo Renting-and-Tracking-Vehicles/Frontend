@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginService } from './services/login.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -46,8 +47,8 @@ import { RentHistoryComponent } from './rent-history/rent-history.component';
     MatFormFieldModule,
     FontAwesomeModule,
     HttpClientModule,
-    NgxPaginationModule
-
+    NgxPaginationModule,
+    SweetAlert2Module
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
