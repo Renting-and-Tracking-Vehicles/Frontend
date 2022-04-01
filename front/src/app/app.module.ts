@@ -22,6 +22,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RentHistoryComponent } from './rent-history/rent-history.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { RentHistoryComponent } from './rent-history/rent-history.component';
     LandingPageComponent,
     HomePageComponent,
     NavbarComponent,
-    RentHistoryComponent
+    RentHistoryComponent,
+    UserProfileComponent,
+    UserProfileEditComponent
   ],
   imports: [
     BrowserModule,
