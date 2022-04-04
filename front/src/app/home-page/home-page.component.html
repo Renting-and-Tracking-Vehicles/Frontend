@@ -27,6 +27,23 @@
     </div>
 </div>
 
+<!-- Finish popup -->
+<div id="finish-popup">
+    <div class="modal-content">
+        <div class="header-modal"><div class="close" (click)="closeFinishPopup($event)">+</div></div>
+        <div class="popup-img-wrapper">
+            <img class="car-galery" src="https://vehicle-images-levi9.s3.amazonaws.com/images/map.jpg">
+        </div>
+        <div class="car-description">
+            <h4>Select garage:</h4>
+            <select class="select-garage" [(ngModel)]="selectedRenting.vehicle.garage">
+                <option *ngFor="let garage of availableGaragesToFinishRent" [ngValue]="garage"> {{garage.address.streetName}} {{garage.address.streetNumber}}</option>
+            </select>
+        </div>
+        <div class="btn-finish-wrapper"><button class="btn-finish" (click)="finishRenting()">Finish</button></div>
+    </div>
+</div>
+
 <div class="home-page">
     <div class="cover-photo">
         <img class="img" src="https://vehicle-images-levi9.s3.amazonaws.com/images/cover5.jpg" />
@@ -70,28 +87,28 @@
                     <h2>Rented cars:</h2>
                 </div>
             </div>
-            <div class="rented-car-details" *ngFor="let vehicle of rentedVehicles">
+            <div class="rented-car-details" *ngFor="let renting of rentedVehicles">
                 <div class="img-wrapper">
-                    <img class="rented-car-galery" src={{vehicle.images[0]}}>
+                    <img class="rented-car-galery" src={{renting.vehicle.images[0]}}>
                 </div>
                 <div class="car-description">
                     <span class="row">
                         <span class="attribute-key"> Model</span>
-                        <span class="attribute-value"> {{vehicle.vehicleModel}}</span>
+                        <span class="attribute-value"> {{renting.vehicle.model}}</span>
                     </span><hr/>
                     <span class="row">
                         <span class="attribute-key"> Start address</span>
-                        <span class="attribute-value"> {{vehicle.startAddress.streetName}} {{vehicle.startAddress.streetNumber}}</span>
+                        <span class="attribute-value"> {{renting.vehicle.garage.address.streetName}} {{renting.vehicle.garage.address.streetNumber}}</span>
                     </span><hr/>
                     <span class="row">
                         <span class="attribute-key"> Current duration</span>
-                        <span class="attribute-value"> {{vehicle.durationInDays}} </span>
+                        <span class="attribute-value"> {{renting.durationInDays}} </span>
                     </span><hr/>
                     <span class="row">
                         <span class="attribute-key"> Current coast</span>
-                        <span class="attribute-value"> {{vehicle.totalPrice}} </span>
+                        <span class="attribute-value"> {{renting.totalPrice}} </span>
                     </span><hr/>
-                    <div class="btn-rent-wrapper"><button class="btn-rent">Finish rent</button></div>
+                    <div class="btn-rent-wrapper"><button class="btn-rent" (click)="showFinishPopup($event, renting)">Finish rent</button></div>
                 </div>
             </div>
         </div>

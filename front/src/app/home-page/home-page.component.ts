@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { RentingHistory } from '../model/renting-history.model';
+import { Garage } from '../model/garage.model';
 import { Renting } from '../model/renting.model';
 import { Vehicle } from '../model/vehicle.model';
 import { VehicleService } from '../services/vehicle.service';
@@ -24,44 +24,39 @@ export class HomePageComponent implements OnInit {
     },
     images: ["https://vehicle-images-levi9.s3.amazonaws.com/images/ix.jpg"]
   };
+  selectedRenting: Renting = {
+      vehicle: this.selectedVehicle,
+      userId: 1,
+      startDay: new Date(),
+      durationInDays: 1
+  };
   searchFilter: string = '';
   filteredVehicles: Vehicle[] = [];
   availableVehicles: Vehicle[] = [];
-  rentedVehicles: RentingHistory[] = [
-  /* {
-        vehicleModel: "Tesla serie 3",
-        startAddress: {
-            streetName: "Trifkovicev trg",
-            streetNumber: "6",
-            city: "Novi Sad"
-        },
-        endAddress: {
-            streetName: "Trifkovicev trg",
-            streetNumber: "6",
-            city: "Novi Sad"
-        },
-        durationInDays: 2,
-        totalPrice: 1200,
-        images: ["https://vehicle-images-levi9.s3.amazonaws.com/images/ix.jpg"]
-    }*/
-  ];
+  availableGaragesToFinishRent: Garage[] = [];
+  rentedVehicles: Renting[] = [];
+
   constructor(private vehicleService: VehicleService) {}
 
   //Pagination
   totalLength:any;
   page:number=1;
 
-
   ngOnInit(): void {
       this.fetchAvailableCars();
+      this.fetchRentedCars();
   }
 
     private fetchAvailableCars() {
-        this.vehicleService.getAllAvailableCars().subscribe(
-            data => {
-                this.availableVehicles = data;
-            }
-        );
+        this.vehicleService.getAllAvailableCars().subscribe(data => { this.availableVehicles = data; });
+    }
+
+    private fetchAvailableGarages() {
+        this.vehicleService.getAllAvailableGarages().subscribe(data => { this.availableGaragesToFinishRent = data; });
+    }
+
+    private fetchRentedCars() {
+        this.vehicleService.getCurrentRentedCars(1).subscribe(data => { this.rentedVehicles = data; });
     }
 
   rentCar(vehicle: Vehicle): void {
@@ -74,8 +69,23 @@ export class HomePageComponent implements OnInit {
         confirmButtonText: 'OK',
         position: 'top-right'
       });
-      this.fetchAvailableCars();
+     this.fetchRentedCars();
      (document.querySelector('#vehicle-details-modal') as HTMLElement).style.display = 'none';
+     this.fetchRentedCars();
+  }
+
+  finishRenting() : void {
+    this.vehicleService.finishRenting(this.selectedRenting);
+    (document.querySelector('#finish-popup') as HTMLElement).style.display = 'none';
+    Swal.fire({
+        title: 'Success!',
+        text: 'You successfully finish renting!',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        position: 'top-right'
+      });
+      this.fetchRentedCars();
+      this.fetchAvailableCars();
   }
 
   searchVehicles(): void {
@@ -102,5 +112,18 @@ export class HomePageComponent implements OnInit {
   closeCarDetailsModal(event: MouseEvent): void {
     event.preventDefault();
     (document.querySelector('#vehicle-details-modal') as HTMLElement).style.display = 'none';
+  }
+
+  showFinishPopup(event: MouseEvent, renting: Renting): void {
+    event.preventDefault();
+    this.selectedRenting = renting;
+    this.fetchAvailableGarages();
+    (document.querySelector('#finish-popup') as HTMLElement).style.display = 'flex';
+    this.fetchAvailableCars();
+  }
+
+  closeFinishPopup (event: MouseEvent): void {
+    event.preventDefault();
+    (document.querySelector('#finish-popup') as HTMLElement).style.display = 'none';
   }
 }
