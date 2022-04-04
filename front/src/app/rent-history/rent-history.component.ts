@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RentingHistory } from '../model/renting-history.model';
+import { VehicleService } from '../services/vehicle.service';
 
 @Component({
   selector: 'app-rent-history',
@@ -8,59 +9,15 @@ import { RentingHistory } from '../model/renting-history.model';
 })
 export class RentHistoryComponent implements OnInit {
 
-  rentingHistory: RentingHistory[] = [
-    {
-        vehicleModel: "Tesla serie 3",
-        startAddress: {
-            streetName: "Trifkovicev trg",
-            streetNumber: "6",
-            city: "Novi Sad"
-        },
-        endAddress: {
-            streetName: "Trifkovicev trg",
-            streetNumber: "6",
-            city: "Novi Sad"
-        },
-        durationInDays: 2,
-        totalPrice: 1200,
-        images: []
-    },
-    {
-        vehicleModel: "Audi e tron",
-        startAddress: {
-            streetName: "Hadzi Ruvimova",
-            streetNumber: "8",
-            city: "Novi Sad"
-        },
-        endAddress: {
-            streetName: "Trifkovicev trg",
-            streetNumber: "6",
-            city: "Novi Sad"
-        },
-        durationInDays: 3,
-        totalPrice: 1500,
-        images: []
-    },
-    {
-        vehicleModel: "Tesla serie 4",
-        startAddress: {
-            streetName: "Trifkovicev trg",
-            streetNumber: "6",
-            city: "Novi Sad"
-        },
-        endAddress: {
-            streetName: "Hadzi Ruvimova",
-            streetNumber: "8",
-            city: "Novi Sad"
-        },
-        durationInDays: 5,
-        totalPrice: 2500,
-        images: []
-    },
-  ];  
+  rentingHistory: RentingHistory[] = [];  
 
-  constructor() { }
+  constructor(private vehicleService: VehicleService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getRentingHistory();
+  }
 
+  private getRentingHistory() {
+    this.vehicleService.getRentingHistory(1).subscribe(data => { this.rentingHistory = data; });
+  }
 }

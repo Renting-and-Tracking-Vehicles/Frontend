@@ -18,9 +18,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let rent of rentingHistory">
-              <td> {{rent.vehicleModel}} </td>
-              <td> {{rent.startAddress.city}}, {{rent.startAddress.streetName}} {{rent.startAddress.streetNumber}}</td>
-              <td> {{rent.startAddress.city}}, {{rent.endAddress.streetName}} {{rent.endAddress.streetNumber}} </td>
+              <td> {{rent.vehicle.model}} </td>
+              <td> {{rent.startGarage.address.city}}, {{rent.startGarage.address.streetName}} {{rent.startGarage.address.streetNumber}}</td>
+              <td> {{rent.endGarage.address.city}}, {{rent.endGarage.address.streetName}} {{rent.endGarage.address.streetNumber}} </td>
               <td> {{rent.durationInDays}} </td>
               <td> {{rent.totalPrice}}e</td>
             </tr>
