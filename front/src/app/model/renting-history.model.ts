@@ -1,20 +1,18 @@
-import { Address } from "./address.model";
+import { Garage } from "./garage.model";
+import { Vehicle } from "./vehicle.model";
 
 export class RentingHistory {
-    public vehicleModel: string;
-    public startAddress: Address;
-    public endAddress: Address;
+    public vehicle: Vehicle;
+    public startGarage: Garage;
+    public endGarage: Garage;
     public durationInDays: number;
     public totalPrice: number;
-    public images: String[];
 
-    constructor (vehicleModel: string, startAddress: Address, endAddress: Address, durationInDays: number, totalPrice: number,
-                 images: String[]) {
-        this.vehicleModel = vehicleModel;
-        this.startAddress = startAddress;
-        this.endAddress = endAddress;
+    constructor (vehicle: Vehicle, startGarage: Garage, endGarage: Garage, durationInDays: number, totalPrice: number) {
+        this.vehicle = vehicle;
+        this.startGarage = startGarage;
+        this.endGarage = endGarage;
         this.durationInDays = durationInDays;
         this.totalPrice = totalPrice;
-        this.images = images;
     }
 }
