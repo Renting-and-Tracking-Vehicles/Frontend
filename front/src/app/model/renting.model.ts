@@ -1,3 +1,4 @@
+import { Garage } from "./garage.model";
 import { Vehicle } from "./vehicle.model";
 
 export class Renting {
@@ -8,6 +9,9 @@ export class Renting {
     public durationInDays: number;
     public startDay: Date;
     public endDay?: Date;
+    public startGarage?: Garage;
+    public endGarage?: Garage;
+
 
     constructor (vehicle: Vehicle, userId: number) {
         this.vehicle = vehicle;
@@ -15,5 +19,6 @@ export class Renting {
         this.totalPrice = this.vehicle.pricePerDay;
         this.durationInDays = 1;
         this.startDay = new Date();
+        this.startGarage = this.vehicle.garage;
     }
 }

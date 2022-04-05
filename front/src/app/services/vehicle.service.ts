@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Garage } from '../model/garage.model';
+import { RentingHistory } from '../model/renting-history.model';
 import { Renting } from '../model/renting.model';
 import { Vehicle } from '../model/vehicle.model';
 
@@ -17,15 +18,19 @@ export class VehicleService {
   constructor(private httpClient : HttpClient) {}
 
     getAllAvailableCars() : Observable<Vehicle[]> {
-         return this.httpClient.get<Vehicle[]>(this.baseUrlVehicle + 'getAvailableVehicles');
+         return this.httpClient.get<Vehicle[]>(this.baseUrlVehicle + 'available-vehicles');
     }
 
     getCurrentRentedCars(userId: number) : Observable<Renting[]>{
-        return this.httpClient.get<Renting[]>(this.baseUrlRenting + '/userRentings/' + userId);
+        return this.httpClient.get<Renting[]>(this.baseUrlRenting + 'current-rentings/' + userId);
+    }
+
+    getRentingHistory(userId: number) : Observable<RentingHistory[]>{
+        return this.httpClient.get<RentingHistory[]>(this.baseUrlRenting + 'rentings-history/' + userId);
     }
 
     rentACar(renting: Renting)  {
-        return this.httpClient.post<Renting>(this.baseUrlRenting + 'startRenting', renting).subscribe((value)=>{
+        return this.httpClient.post<Renting>(this.baseUrlRenting + 'start-renting', renting).subscribe((value)=>{
           }, (error)=>{
             console.log(error);
           })
@@ -33,8 +38,8 @@ export class VehicleService {
 
     finishRenting(renting: Renting) {
         this.calculateTotalPrice(renting);
-        console.log(JSON.stringify(renting));
-        return this.httpClient.put<Renting>(this.baseUrlRenting + 'finishRenting', renting).subscribe((value)=>{
+        renting.endGarage = renting.vehicle.garage;
+        return this.httpClient.put<Renting>(this.baseUrlRenting + 'finish-renting', renting).subscribe((value)=>{
           }, (error)=>{
             console.log(error);
           })
@@ -53,5 +58,5 @@ export class VehicleService {
         return renting;
     }
 
-    getAllAvailableGarages() : Observable<Garage[]> { return this.httpClient.get<Garage[]>(this.baseUrlGarage + 'getAll'); }
+    getAllAvailableGarages() : Observable<Garage[]> { return this.httpClient.get<Garage[]>(this.baseUrlGarage); }
 }
