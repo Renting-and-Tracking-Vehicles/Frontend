@@ -14,6 +14,11 @@ export class LoginService {
 
   private baseUrlAuth:  string = environment.baseUrlAuth; 
 
+  jwtToken = localStorage.getItem("token");
+
+  headers = {'Content-Type' : 'application/json',
+            'Authorization' : `Bearer ${localStorage.jwtToken}`}
+
   register(user : User){
     return this.httpClient.post<User>("http://localhost:1026/users/addUser", user).subscribe((value)=>{
       console.log(user);

@@ -9,6 +9,7 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   userModel: UserLogin = {
     email: '',
     password: ''
