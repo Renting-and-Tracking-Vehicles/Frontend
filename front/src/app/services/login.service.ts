@@ -13,6 +13,7 @@ export class LoginService {
   constructor(private httpClient : HttpClient) { }
 
   private baseUrlAuth:  string = environment.baseUrlAuth; 
+  private baseUrlUsers: string = environment.baseUrlUser;
 
   jwtToken = localStorage.getItem("token");
 
@@ -20,7 +21,7 @@ export class LoginService {
             'Authorization' : `Bearer ${localStorage.jwtToken}`}
 
   register(user : User){
-    return this.httpClient.post<User>("http://localhost:1026/users/addUser", user).subscribe((value)=>{
+    return this.httpClient.post<User>(this.baseUrlUsers + "addUser", user).subscribe((value)=>{
       console.log(user);
     }, (error)=>{
       console.log(error);
