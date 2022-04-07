@@ -36,6 +36,27 @@ export class HomePageComponent implements OnInit {
   availableGaragesToFinishRent: Garage[] = [];
   rentedVehicles: Renting[] = [];
 
+  lat = 45.3;
+  long = 19.75;
+  zoom=10;
+  markers = [
+        {
+            lat: 45.08,
+            lng: 19.85,
+            label: 'NS'
+        },
+        {
+            lat: 45.28,
+            lng: 19.75,
+            label: 'NS'
+        },
+        {
+            lat: 44.88,
+            lng: 20.35,
+            label: 'NS'
+        },
+    ];
+
   constructor(private vehicleService: VehicleService) {}
 
   //Pagination
