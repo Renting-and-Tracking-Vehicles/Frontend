@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 
 import { User } from '../model/user.model';
@@ -17,7 +18,8 @@ export class RegisterComponent implements OnInit {
         password: '',
         name: '',
         surname: '',
-        phone: ''
+        phone: '',
+        role: 'ROLE_USER'
     };
 
     hide: boolean = false;
@@ -29,11 +31,12 @@ export class RegisterComponent implements OnInit {
     phone : new FormControl('', [Validators.required, Validators.pattern('[- +()0-9]+')])
   })
 
-  constructor(public loginService : LoginService) { }
+  constructor(public loginService : LoginService, private router: Router) { }
 
   ngOnInit(): void {}
 
   onRegister(){
     this.loginService.register(this.userModel);
+    this.router.navigate(['/login']);
   }
 }

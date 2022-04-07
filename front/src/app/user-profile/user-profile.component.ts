@@ -12,7 +12,8 @@ export class UserProfileComponent implements OnInit {
     surname: "Sarenac",
     password: "123456",
     email: "psarenac@gmail.com",
-    phone: "021322123"
+    phone: "021322123",
+    role: ""
   }
 
   constructor() { }

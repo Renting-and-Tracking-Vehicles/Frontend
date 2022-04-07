@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  baseUrlVehicle: 'http://localhost:1025/vehicle/',
-  baseUrlRenting: 'http://localhost:1025/renting/',
-  baseUrlGarage:  'http://localhost:1025/garage/',
-  baseUrlUser:    'http://localhost:1026/users/',
-  baseUrlAuth:    'http://localhost:1026/auth/'
+  baseUrlVehicle: 'http://localhost:1027/vehicles/vehicle/',
+  baseUrlRenting: 'http://localhost:1027/vehicles/renting/',
+  baseUrlGarage:  'http://localhost:1027/vehicles/garage/',
+  baseUrlUser:    'http://localhost:1027/users/',
+  baseUrlAuth:    'http://localhost:1027/auth/'
 };
 
 /*
