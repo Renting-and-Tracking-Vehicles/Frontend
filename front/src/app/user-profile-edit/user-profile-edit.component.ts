@@ -16,7 +16,8 @@ export class UserProfileEditComponent implements OnInit {
     password: '',
     name: '',
     surname: '',
-    phone: ''
+    phone: '',
+    role: ''
 };
 
     hide: boolean = false;
