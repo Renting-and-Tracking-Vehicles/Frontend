@@ -19,7 +19,9 @@ export class HomePageComponent implements OnInit {
         address: {
           streetName: "Trifkovicev trg",
           streetNumber: "6",
-          city: "Novi Sad"
+          city: "Novi Sad",
+          latitude: 44.85,
+          longitude: 19.85
         }
     },
     images: ["https://vehicle-images-levi9.s3.amazonaws.com/images/ix.jpg"]
@@ -36,15 +38,22 @@ export class HomePageComponent implements OnInit {
   availableGaragesToFinishRent: Garage[] = [];
   rentedVehicles: Renting[] = [];
 
-  constructor(private vehicleService: VehicleService) {}
+  lat = 45.26;
+  long = 19.83;
+  zoom=13;
+  markers: any[] = [];
+
+  constructor(private vehicleService: VehicleService) {
+    this.fetchAvailableCars();
+    this.fetchRentedCars();
+    this.fetchAvailableGarages();
+  }
 
   //Pagination
   totalLength:any;
   page:number=1;
 
   ngOnInit(): void {
-      this.fetchAvailableCars();
-      this.fetchRentedCars();
   }
 
     private fetchAvailableCars() {
@@ -52,7 +61,11 @@ export class HomePageComponent implements OnInit {
     }
 
     private fetchAvailableGarages() {
-        this.vehicleService.getAllAvailableGarages().subscribe(data => { this.availableGaragesToFinishRent = data; });
+        this.vehicleService.getAllAvailableGarages().subscribe(data => { 
+            this.availableGaragesToFinishRent = data; 
+            for(let garage of this.availableGaragesToFinishRent)
+                this.markers.push({lat: garage.address.latitude, lng: garage.address.longitude, label: `${garage.address.streetName}`})     
+        });  
     }
 
     private fetchRentedCars() {
@@ -85,7 +98,7 @@ export class HomePageComponent implements OnInit {
         position: 'top-right'
       });
       this.fetchRentedCars();
-      this.fetchAvailableCars();
+    //  this.fetchAvailableCars();
   }
 
   searchVehicles(): void {
@@ -95,6 +108,12 @@ export class HomePageComponent implements OnInit {
             this.filteredVehicles.push(vehicle);
 
       this.availableVehicles = this.filteredVehicles;   
+  }
+
+  filterVehicles(filterParam: string): void {
+    this.searchFilter = filterParam.toLowerCase();
+    console.log(this.searchFilter)
+    this.searchVehicles();
   }
 
   onFocusLost($event: Event) : void {

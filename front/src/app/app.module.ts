@@ -17,6 +17,7 @@ import { LoginService } from './services/login.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AgmCoreModule } from '@agm/core';
 
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -52,7 +53,12 @@ import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.
     FontAwesomeModule,
     HttpClientModule,
     NgxPaginationModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    AgmCoreModule.forRoot({
+        apiKey: 'AIzaSyDuGqdjWOUzm9GKukdczdEAPA6ojdEul3g',
+        libraries: ['places']
+  
+      })
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
