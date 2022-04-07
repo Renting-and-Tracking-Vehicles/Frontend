@@ -15,6 +15,7 @@ export class LoginService {
 
   private baseUrlAuth:  string = environment.baseUrlAuth; 
   user: User | any;
+  private baseUrlUsers: string = environment.baseUrlUser;
 
   jwtToken = localStorage.getItem("token");
 

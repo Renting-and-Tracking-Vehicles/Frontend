@@ -30,9 +30,10 @@
     margin-left: 0% !important;
 }
 .map{
-    margin-top: 30%;
+    margin-top: 50%;
     margin-left: 0%;
     width: 80%;
+    height: 60vh;
 }
 .search-field-wrapper{
     margin: 10% 25%;
