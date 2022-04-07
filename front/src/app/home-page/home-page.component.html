@@ -115,8 +115,8 @@
         <!-- Google map placeholder-->
         <div class="right-side">
             <div>
-                <agm-map class="map" [latitude]='lat'[longitude]='long' [zoom]='zoom' >
-                    <agm-marker *ngFor="let marker of markers"  [latitude]="marker.lat"  [longitude]="marker.lng">    
+                <agm-map class="map" [latitude]='lat' [longitude]='long' [zoom]='zoom' >
+                    <agm-marker *ngFor="let marker of markers"  [latitude]="marker.lat"  [longitude]="marker.lng" (markerClick)="filterVehicles(marker.label)">    
                         <agm-info-window #infoWindow> {{ marker.label }}  </agm-info-window>
                     </agm-marker>
                 </agm-map>
