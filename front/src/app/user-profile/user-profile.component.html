@@ -2,33 +2,18 @@
     <mat-card class="my-card">
     <mat-card-header>
       <img mat-card-avatar class="pic" src="https://imgs.search.brave.com/CZT-IAxYKj77GSPqGvVdAGayUZ6yCir6Aev0gj72ntQ/rs:fit:860:887:1/g:ce/aHR0cHM6Ly93d3cu/a2luZHBuZy5jb20v/cGljYy9tLzc4LTc4/NTgyN191c2VyLXBy/b2ZpbGUtYXZhdGFy/LWxvZ2luLWFjY291/bnQtbWFsZS11c2Vy/LWljb24ucG5n" alt="Avatar">    
-      <mat-card-title>Pavle Sarenac</mat-card-title>
+      <mat-card-title>{{dummy.name}} {{dummy.surname}}</mat-card-title>
       <mat-card-subtitle>User profile</mat-card-subtitle>
     </mat-card-header>
     
     <mat-card-content class="user-description">
-      <span class="row">
-        Name: {{dummy.name}}
-      </span>
-
-      <span class="row">
-        Surname: {{dummy.surname}}
-      </span>
-
-      <span class="row">
-        Email: {{dummy.email}}
-      </span>
-
-      <span class="row">
-        Password: {{dummy.password}}
-      </span>
-
-      <span class="row">
-        Phone: {{dummy.phone}}
-      </span>
+      <span class="row">  Name: {{dummy.name}} </span>
+      <span class="row">  Surname: {{dummy.surname}} </span>
+      <span class="row">  Email: {{dummy.email}} </span>
+      <span class="row">  Phone: {{dummy.phone}} </span>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button routerLink="/userProfileEdit/1">Edit profile</button>  
+      <button mat-button (click)="editProfile()">Edit profile</button>  
       <button mat-button>Two step</button>
     </mat-card-actions>
   </mat-card>

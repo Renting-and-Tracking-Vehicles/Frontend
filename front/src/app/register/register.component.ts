@@ -14,6 +14,7 @@ import { LoginService } from '../services/login.service';
 })
 export class RegisterComponent implements OnInit {
     userModel: User = {
+        id: 0,
         email: '',
         password: '',
         name: '',

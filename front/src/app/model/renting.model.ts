@@ -13,9 +13,9 @@ export class Renting {
     public endGarage?: Garage;
 
 
-    constructor (vehicle: Vehicle, userId: number) {
+    constructor (vehicle: Vehicle) {
         this.vehicle = vehicle;
-        this.userId = userId;
+        this.userId = 1;
         this.totalPrice = this.vehicle.pricePerDay;
         this.durationInDays = 1;
         this.startDay = new Date();

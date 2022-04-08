@@ -3,6 +3,8 @@ import { User } from '../model/user.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { ActivatedRoute } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-user-profile-edit',
@@ -12,13 +14,14 @@ import { ActivatedRoute } from '@angular/router';
 export class UserProfileEditComponent implements OnInit {
 
   userModel: User = {
-    email: '',
-    password: '',
-    name: '',
-    surname: '',
-    phone: '',
-    role: ''
-};
+        id: 0,
+        email: '',
+        password: '',
+        name: '',
+        surname: '',
+        phone: '',
+        role: ''
+   };
 
     hide: boolean = false;
     registerForm = new FormGroup({
@@ -29,13 +32,11 @@ export class UserProfileEditComponent implements OnInit {
     phone : new FormControl('', [Validators.required, Validators.pattern('[- +()0-9]+')])
     })
 
-  constructor(public userService : UserService, private activatedRoute : ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.userService.findOne(this.activatedRoute.snapshot.params['id']).subscribe(r=>{
-      this.userModel = r;
-    })
+  constructor(public userService : UserService, private activatedRoute : ActivatedRoute, private loginService: LoginService) { 
+    this.loginService.getLoggedUser().subscribe(response => { this.userModel = response; });
   }
+
+  ngOnInit(): void {}
 
   edit(){
     this.userService.update(this.userModel);

@@ -22,7 +22,7 @@
                 <span class="attribute-key"> Address</span>
                 <span class="attribute-value"> {{selectedVehicle.garage.address.streetName}} {{selectedVehicle.garage.address.streetNumber}} </span>
             </span><hr/>
-            <div class="btn-rent-wrapper"><button class="btn-rent" (click)="rentCar(selectedVehicle)">Rent</button></div>
+            <div class="btn-rent-wrapper" *ngIf="loggedUser"><button class="btn-rent" (click)="rentCar(selectedVehicle)">Rent</button></div>
         </div>
     </div>
 </div>
