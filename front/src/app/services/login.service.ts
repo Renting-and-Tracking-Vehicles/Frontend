@@ -3,7 +3,7 @@ import { User } from '../model/user.model';
 import { HttpClient } from '@angular/common/http';
 import { UserLogin } from '../model/userLogin.model';
 import { JwtToken } from '../model/jwtToken.model';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -13,7 +13,6 @@ export class LoginService {
 
   constructor(private httpClient : HttpClient) { }
 
-  private baseUrlAuth:  string = environment.baseUrlAuth; 
   private baseUrlUsers: string = environment.baseUrlUser;
   user: User | any;
 
