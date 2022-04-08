@@ -40,6 +40,7 @@ export class VehicleService {
     }
 
     rentACar(renting: Renting)  {
+        this.loginService.getLoggedUser().subscribe(response => { this.loggedUser = response; });
         renting.userId = this.loggedUser.id;
         return this.httpClient.post<Renting>(this.baseUrlRenting + 'start-renting', renting).subscribe((value)=>{
           }, (error)=>{

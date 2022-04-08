@@ -52,7 +52,6 @@ export class LoginService {
                       'Authorization' : `${localStorage.jwtToken}`}
       localStorage.setItem("user", JSON.stringify(this.httpClient.get<User>(this.baseUrlUsers + "auth/whoami", {headers : this.headers})))
       this.getLoggedUser().subscribe(response => this.user = response);
-      console.log(JSON.stringify(this.user))
     }, (error)=> {
         Swal.fire({
             title: 'Error',
