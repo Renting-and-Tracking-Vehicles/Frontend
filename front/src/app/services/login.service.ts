@@ -14,8 +14,9 @@ export class LoginService {
   constructor(private httpClient : HttpClient) { }
 
   private baseUrlAuth:  string = environment.baseUrlAuth; 
-  user: User | any;
   private baseUrlUsers: string = environment.baseUrlUser;
+  user: User | any;
+
 
   jwtToken = localStorage.getItem("token");
 
@@ -23,8 +24,7 @@ export class LoginService {
             'Authorization' : `${localStorage.jwtToken}`}
 
   register(user : User){
-    return this.httpClient.post<User>("http://localhost:1027/users/addUser", user).subscribe((value)=>{
-      console.log(user);
+    return this.httpClient.post<User>(this.baseUrlUsers +"addUser", user).subscribe((value)=>{
       Swal.fire({
         title: 'Success!',
         text: 'You successfully registered, check your email!',
@@ -33,24 +33,41 @@ export class LoginService {
         position: 'top-right'
       });
     }, (error)=>{
-      console.log(error);
+        Swal.fire({
+            title: 'Error',
+            text: error,
+            icon: 'error',
+            confirmButtonText: 'OK',
+            position: 'top-right'
+          });
     })
   }
 
   login(user: UserLogin){
-    return this.httpClient.post<JwtToken>("http://localhost:1027/" + "users/auth/login", user).subscribe((response) => {
+    return this.httpClient.post<JwtToken>(this.baseUrlUsers + "auth/login", user).subscribe((response) => {
       var token = response.accessToken;
       localStorage.setItem("jwtToken", token);
       console.log(token);
       this.headers = {'Content-Type' : 'application/json',
                       'Authorization' : `${localStorage.jwtToken}`}
-      localStorage.setItem("user", JSON.stringify(this.httpClient.get<User>("http://localhost:1027/users/auth/whoami", {headers : this.headers})))
+      localStorage.setItem("user", JSON.stringify(this.httpClient.get<User>(this.baseUrlUsers + "auth/whoami", {headers : this.headers})))
+      this.getLoggedUser().subscribe(response => this.user = response);
     }, (error)=> {
-      console.log(error);
+        Swal.fire({
+            title: 'Error',
+            text: error,
+            icon: 'error',
+            confirmButtonText: 'OK',
+            position: 'top-right'
+          });
     })
   }
 
   logout(){
     localStorage.clear();
+  }
+
+  getLoggedUser() {
+    return this.httpClient.get<User>(this.baseUrlUsers + "auth/whoami", {headers : this.headers});
   }
 }

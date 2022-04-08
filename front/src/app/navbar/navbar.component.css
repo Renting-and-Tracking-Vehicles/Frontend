@@ -12,10 +12,11 @@
   .renting{
     display: flex;
     align-items: center;
-    margin-right: 100%;
+    margin-right: 85%;
+    width: 50%;
   }
   .renting a{
-    width: 148px;
+    width: 140px;
   }  
   .navigation{
     display: flex;
@@ -35,5 +36,9 @@
   div > a{
     font-size: 16px;
     width: 150px;
+  }
+  .my-profile{
+    display: flex;
+    flex-direction: row;
   }
 

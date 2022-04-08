@@ -2,11 +2,11 @@
   <div class="navbar-nav navigation">
     <div class="options">
       <div class="renting">
-        <a class="nav-item nav-link active" href="#" [routerLink]="['/homePage']">Rent a car</a>
-        <a class="nav-item nav-link active" href="#" [routerLink]="['/history']">Renting History</a>
+        <a class="nav-item nav-link active" [routerLink]="['/homePage']">Rent a car</a>
+        <a class="nav-item nav-link active" [routerLink]="['/history']">Renting History</a>
       </div>
-      <div class="my-profile">
-        <a class="nav-item nav-link active" href="#">My profile</a>
+      <div class="my-profile" *ngIf="loggedUser">
+        <a class="nav-item nav-link active" [routerLink]="['/userProfile']">My profile</a>
         <a class="nav-item nav-link active" [routerLink]="['/login']" (click)="logout()">Log Out</a>
       </div>
     </div>

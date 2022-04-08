@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Garage } from '../model/garage.model';
 import { Renting } from '../model/renting.model';
+import { User } from '../model/user.model';
 import { Vehicle } from '../model/vehicle.model';
+import { LoginService } from '../services/login.service';
 import { VehicleService } from '../services/vehicle.service';
 
 @Component({
@@ -37,16 +39,18 @@ export class HomePageComponent implements OnInit {
   availableVehicles: Vehicle[] = [];
   availableGaragesToFinishRent: Garage[] = [];
   rentedVehicles: Renting[] = [];
+  loggedUser: User | any;
 
   lat = 45.26;
   long = 19.83;
   zoom=13;
   markers: any[] = [];
 
-  constructor(private vehicleService: VehicleService) {
+  constructor(private vehicleService: VehicleService, private loginService: LoginService) {
     this.fetchAvailableCars();
     this.fetchRentedCars();
     this.fetchAvailableGarages();
+    this.loggedUser = loginService.getLoggedUser();
   }
 
   //Pagination
@@ -69,11 +73,11 @@ export class HomePageComponent implements OnInit {
     }
 
     private fetchRentedCars() {
-        this.vehicleService.getCurrentRentedCars(1).subscribe(data => { this.rentedVehicles = data; });
+        this.vehicleService.getCurrentRentedCars().subscribe(data => { this.rentedVehicles = data; });
     }
 
   rentCar(vehicle: Vehicle): void {
-     let renting = new Renting(vehicle, 1);
+     let renting = new Renting(vehicle);
      this.vehicleService.rentACar(renting);
      Swal.fire({
         title: 'Success!',
@@ -98,7 +102,6 @@ export class HomePageComponent implements OnInit {
         position: 'top-right'
       });
       this.fetchRentedCars();
-    //  this.fetchAvailableCars();
   }
 
   searchVehicles(): void {

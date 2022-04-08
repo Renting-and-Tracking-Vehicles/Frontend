@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'homePage', component: HomePageComponent },
   { path: 'landingPage', component: LandingPageComponent },
   { path: 'userProfile', component: UserProfileComponent},
-  { path: 'userProfileEdit/:id', component: UserProfileEditComponent},
+  { path: 'userProfileEdit', component: UserProfileEditComponent},
   { path: '',   redirectTo: 'landingPage', pathMatch: 'full'},
   { path: '**', redirectTo: 'landingPage', pathMatch: 'full'}
 ];

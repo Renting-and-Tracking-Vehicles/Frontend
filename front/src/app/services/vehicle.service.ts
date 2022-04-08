@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Garage } from '../model/garage.model';
 import { RentingHistory } from '../model/renting-history.model';
 import { Renting } from '../model/renting.model';
+import { User } from '../model/user.model';
 import { Vehicle } from '../model/vehicle.model';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,22 +16,32 @@ export class VehicleService {
   private baseUrlVehicle: string = environment.baseUrlVehicle;
   private baseUrlRenting: string = environment.baseUrlRenting;
   private baseUrlGarage:  string = environment.baseUrlGarage;
+  private loggedUser: User | any;
 
-  constructor(private httpClient : HttpClient) {}
+  constructor(private httpClient : HttpClient, private loginService: LoginService) {
+    this.loginService.getLoggedUser().subscribe(response => { this.loggedUser = response; });
+  }
 
     getAllAvailableCars() : Observable<Vehicle[]> {
          return this.httpClient.get<Vehicle[]>(this.baseUrlVehicle + 'available-vehicles');
     }
 
-    getCurrentRentedCars(userId: number) : Observable<Renting[]>{
-        return this.httpClient.get<Renting[]>(this.baseUrlRenting + 'current-rentings/' + userId);
+    getCurrentRentedCars() : Observable<Renting[]>{
+        if(this.loggedUser)
+            return this.httpClient.get<Renting[]>(this.baseUrlRenting + 'current-rentings/' + this.loggedUser.id);
+
+        return new Observable<Renting[]>();
     }
 
     getRentingHistory(userId: number) : Observable<RentingHistory[]>{
-        return this.httpClient.get<RentingHistory[]>(this.baseUrlRenting + 'rentings-history/' + userId);
+        if(this.loggedUser)
+             return this.httpClient.get<RentingHistory[]>(this.baseUrlRenting + 'rentings-history/' + this.loggedUser.id);
+        return new Observable<RentingHistory[]>();
     }
 
     rentACar(renting: Renting)  {
+        this.loginService.getLoggedUser().subscribe(response => { this.loggedUser = response; });
+        renting.userId = this.loggedUser.id;
         return this.httpClient.post<Renting>(this.baseUrlRenting + 'start-renting', renting).subscribe((value)=>{
           }, (error)=>{
             console.log(error);
