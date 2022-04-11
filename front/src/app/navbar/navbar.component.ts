@@ -9,10 +9,15 @@ import { LoginService } from '../services/login.service';
 })
 export class NavbarComponent implements OnInit {
   loggedUser: User | any;
+  user: any;
 
-  constructor(private loginService: LoginService) { this.loggedUser = this.loginService.getLoggedUser(); }
+  constructor(private loginService: LoginService) {  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user =  localStorage.getItem("user");
+    if(this.user != null)
+        this.loggedUser = JSON.parse(this.user);
+  }
 
   logout(){
       this.loggedUser = null;

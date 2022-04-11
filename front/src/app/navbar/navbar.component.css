@@ -2,7 +2,9 @@
     margin-top: -45px;
     height: 45px;
     margin-right: 15%;
+    width: 100%;
     background-color: rgba(19, 28, 37, 0.4);
+    padding-right: 20%;
   }
   .active-link {
     background-color: rgba(25, 35, 46, 0.7);
@@ -40,5 +42,8 @@
   .my-profile{
     display: flex;
     flex-direction: row;
+  }
+  .login{
+      margin-left: 35%;
   }
 

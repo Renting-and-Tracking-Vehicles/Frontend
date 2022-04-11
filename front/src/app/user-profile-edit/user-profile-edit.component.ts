@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { LoginService } from '../services/login.service';
 
@@ -13,15 +13,7 @@ import { LoginService } from '../services/login.service';
 })
 export class UserProfileEditComponent implements OnInit {
 
-  userModel: User = {
-        id: 0,
-        email: '',
-        password: '',
-        name: '',
-        surname: '',
-        phone: '',
-        role: ''
-   };
+  userModel: User | any;
 
     hide: boolean = false;
     registerForm = new FormGroup({
@@ -32,7 +24,7 @@ export class UserProfileEditComponent implements OnInit {
     phone : new FormControl('', [Validators.required, Validators.pattern('[- +()0-9]+')])
     })
 
-  constructor(public userService : UserService, private activatedRoute : ActivatedRoute, private loginService: LoginService) { 
+  constructor(public userService : UserService, private loginService: LoginService, private router: Router) { 
     this.loginService.getLoggedUser().subscribe(response => { this.userModel = response; });
   }
 
@@ -40,6 +32,10 @@ export class UserProfileEditComponent implements OnInit {
 
   edit(){
     this.userService.update(this.userModel);
+  }
+  cancel(event: MouseEvent){
+      event.preventDefault();
+      this.router.navigate(['/userProfile']);
   }
 
 }

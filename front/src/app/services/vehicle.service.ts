@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Garage } from '../model/garage.model';
 import { RentingHistory } from '../model/renting-history.model';
 import { Renting } from '../model/renting.model';
@@ -18,7 +19,7 @@ export class VehicleService {
   private baseUrlGarage:  string = environment.baseUrlGarage;
   private loggedUser: User | any;
 
-  constructor(private httpClient : HttpClient, private loginService: LoginService) {
+  constructor(private httpClient : HttpClient, private loginService: LoginService, private router: Router) {
     this.loginService.getLoggedUser().subscribe(response => { this.loggedUser = response; });
   }
 

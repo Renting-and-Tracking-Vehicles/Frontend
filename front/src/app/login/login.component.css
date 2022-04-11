@@ -2,7 +2,7 @@ mat-card {
     transition: transform .5s ease;
     transform: scale(1);
     height: 330px;
-    max-width: 600px;
+    width: 400px;
     margin: 2em auto;
     text-align: center;
     max-height: 600px;
