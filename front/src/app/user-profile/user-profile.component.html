@@ -1,9 +1,13 @@
 <div class="main">
+    <div class="cover-photo">
+        <img class="img" src="../../assets/images/profile3.jpg" />
+    </div>
+    <navbar></navbar>
     <mat-card class="my-card">
     <mat-card-header>
       <img mat-card-avatar class="pic" src="https://imgs.search.brave.com/CZT-IAxYKj77GSPqGvVdAGayUZ6yCir6Aev0gj72ntQ/rs:fit:860:887:1/g:ce/aHR0cHM6Ly93d3cu/a2luZHBuZy5jb20v/cGljYy9tLzc4LTc4/NTgyN191c2VyLXBy/b2ZpbGUtYXZhdGFy/LWxvZ2luLWFjY291/bnQtbWFsZS11c2Vy/LWljb24ucG5n" alt="Avatar">    
       <mat-card-title>{{dummy.name}} {{dummy.surname}}</mat-card-title>
-      <mat-card-subtitle>User profile</mat-card-subtitle>
+      <mat-card-subtitle>Your profile</mat-card-subtitle>
     </mat-card-header>
     
     <mat-card-content class="user-description">
@@ -12,9 +16,8 @@
       <span class="row">  Email: {{dummy.email}} </span>
       <span class="row">  Phone: {{dummy.phone}} </span>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions class="mat-cardd">
       <button mat-button (click)="editProfile()">Edit profile</button>  
-      <button mat-button>Two step</button>
     </mat-card-actions>
   </mat-card>
 </div> 

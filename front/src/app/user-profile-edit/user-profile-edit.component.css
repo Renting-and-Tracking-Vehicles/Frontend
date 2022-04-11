@@ -1,7 +1,7 @@
 mat-card {
     transition: transform .5s ease;
     transform: scale(1);
-    height: 500px;
+    height: 440px;
     width: 400px;
     max-width: 600px;
     margin: 2em auto;
@@ -50,9 +50,15 @@ mat-card:hover{
 }
 .content-body {
     min-height: 100%;
-    background-image: url('../user-profile/background/bg.webp');
+    background-image: url('../../assets/images/profile4.jpg');
     background-size: cover;
     background-repeat: no-repeat; 
     display: block;
+}
+.buttons{
+    display: flex;
+    margin-left: 30%;
+    margin-right: 30%;
+    justify-content: space-between;
 }
 

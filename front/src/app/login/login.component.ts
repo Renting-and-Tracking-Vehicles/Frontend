@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
 
   onLogin(){
     console.log(this.userModel);
-    this.loginService.login(this.userModel);
-    this.router.navigate(['/homePage']);
+    const user = this.loginService.login(this.userModel);
+    //this.router.navigate(['/homePage']);
   }
 
 }

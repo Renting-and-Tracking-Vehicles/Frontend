@@ -2,7 +2,7 @@
     <mat-card>
         <mat-card-content>
           <div class="header">
-            <P>Profile edit</P>
+            <P>Edit your profile</P>
           </div>
           <form (ngSubmit)="edit()" name="registerForm" [formGroup]="registerForm">
             <div class="nameInput">
@@ -69,8 +69,10 @@
                     </mat-error>
                 </mat-form-field>
               </div>
-    
-            <button mat-flat-button color="primary">Edit</button>
+            <div class="buttons">
+                <button mat-flat-button color="primary">Edit</button>
+                <button mat-stroked-button color="primary" (click)="cancel($event)">Cancel</button>
+            </div>
           </form>
         </mat-card-content>
       </mat-card>

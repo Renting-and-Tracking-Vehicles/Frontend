@@ -3,11 +3,14 @@
     <div class="options">
       <div class="renting">
         <a class="nav-item nav-link active" [routerLink]="['/homePage']">Rent a car</a>
-        <a class="nav-item nav-link active" [routerLink]="['/history']">Renting History</a>
+        <a class="nav-item nav-link active" [routerLink]="['/history']" *ngIf="user">Renting History</a>
       </div>
-      <div class="my-profile" *ngIf="loggedUser">
+      <div class="my-profile" *ngIf="user">
         <a class="nav-item nav-link active" [routerLink]="['/userProfile']">My profile</a>
         <a class="nav-item nav-link active" [routerLink]="['/login']" (click)="logout()">Log Out</a>
+      </div>
+      <div class="login" *ngIf="user == null">
+        <a class="nav-item nav-link active" [routerLink]="['/login']" (click)="logout()">Login</a>
       </div>
     </div>
   </div>
