@@ -13,7 +13,7 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {}
 
   continueAsGuest() : void{
-      localStorage.setItem("user", JSON.stringify(null));
-      this.router.navigate(['/homePage']);
+      //localStorage.setItem("user", JSON.stringify(null));
+      this.router.navigate(['/login']);
   }
 }

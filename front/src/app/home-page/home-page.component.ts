@@ -97,13 +97,13 @@ export class HomePageComponent implements OnInit {
   finishRenting() : void {
     this.vehicleService.finishRenting(this.selectedRenting);
     (document.querySelector('#finish-popup') as HTMLElement).style.display = 'none';
-    Swal.fire({
+   /* Swal.fire({
         title: 'Success!',
         text: 'You successfully finish renting!',
         icon: 'success',
         confirmButtonText: 'OK',
         position: 'top-right'
-      });
+      });*/
       this.fetchRentedCars();
   }
 

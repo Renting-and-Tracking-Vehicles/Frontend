@@ -36,6 +36,5 @@ export class RegisterComponent implements OnInit {
 
   onRegister(){
     this.loginService.register(this.userModel);
-    this.router.navigate(['/login']);
   }
 }
