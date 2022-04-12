@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 import { Garage } from '../model/garage.model';
 import { RentingHistory } from '../model/renting-history.model';
 import { Renting } from '../model/renting.model';
@@ -19,6 +20,9 @@ export class VehicleService {
   private baseUrlGarage:  string = environment.baseUrlGarage;
   private loggedUser: User | any;
 
+  headers = {'Content-Type' : 'application/json',
+            'Authorization' : `${localStorage.jwtToken}`}
+
   constructor(private httpClient : HttpClient, private loginService: LoginService, private router: Router) {
     this.loginService.getLoggedUser().subscribe(response => { this.loggedUser = response; });
   }
@@ -28,9 +32,10 @@ export class VehicleService {
     }
 
     getCurrentRentedCars() : Observable<Renting[]>{
-        if(this.loggedUser)
-            return this.httpClient.get<Renting[]>(this.baseUrlRenting + 'current-rentings/' + this.loggedUser.id);
-
+        this.loginService.getLoggedUser().subscribe(data => this.loggedUser = data)
+        if(this.loggedUser){
+            return this.httpClient.get<Renting[]>(this.baseUrlRenting + 'current-rentings/' + this.loggedUser.id);     
+        }
         return new Observable<Renting[]>();
     }
 
@@ -43,9 +48,22 @@ export class VehicleService {
     rentACar(renting: Renting)  {
         this.loginService.getLoggedUser().subscribe(response => { this.loggedUser = response; });
         renting.userId = this.loggedUser.id;
-        return this.httpClient.post<Renting>(this.baseUrlRenting + 'start-renting', renting).subscribe((value)=>{
+        return this.httpClient.post<Renting>(this.baseUrlRenting + 'start-renting', renting).subscribe((value)=>{ 
+            Swal.fire({
+                title: 'Success!',
+                text: 'Vehicle successfully rented!',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                position: 'top-right'
+              });    
           }, (error)=>{
-            console.log(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Someone already reserved this vehicle!',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                position: 'top-right'
+              })
           })
     }
 

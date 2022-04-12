@@ -33,10 +33,11 @@ export class LoginService {
         confirmButtonText: 'OK',
         position: 'top-right'
       });
+      this.router.navigate(['/login']);
     }, (error)=>{
         Swal.fire({
-            title: 'Error',
-            text: error,
+            title: 'Ooops',
+            text: 'Already exists user with this email!',
             icon: 'error',
             confirmButtonText: 'OK',
             position: 'top-right'
