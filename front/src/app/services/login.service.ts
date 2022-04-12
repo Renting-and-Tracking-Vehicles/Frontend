@@ -3,7 +3,7 @@ import { User } from '../model/user.model';
 import { HttpClient } from '@angular/common/http';
 import { UserLogin } from '../model/userLogin.model';
 import { JwtToken } from '../model/jwtToken.model';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import Swal from 'sweetalert2';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
