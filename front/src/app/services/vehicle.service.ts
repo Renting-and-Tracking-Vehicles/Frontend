@@ -3,7 +3,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 import { Garage } from '../model/garage.model';
+import { Redirection } from '../model/redirection.model';
+import { Rent } from '../model/rent.model';
 import { RentingHistory } from '../model/renting-history.model';
 import { Renting } from '../model/renting.model';
 import { User } from '../model/user.model';
@@ -18,6 +21,10 @@ export class VehicleService {
   private baseUrlRenting: string = environment.baseUrlRenting;
   private baseUrlGarage:  string = environment.baseUrlGarage;
   private loggedUser: User | any;
+  private rent = {
+    "price" : 100,
+    "intent" : "AUTHORIZE"
+  }
 
   constructor(private httpClient : HttpClient, private loginService: LoginService, private router: Router) {
     this.loginService.getLoggedUser().subscribe(response => { this.loggedUser = response; });
@@ -44,6 +51,18 @@ export class VehicleService {
         this.loginService.getLoggedUser().subscribe(response => { this.loggedUser = response; });
         renting.userId = this.loggedUser.id;
         return this.httpClient.post<Renting>(this.baseUrlRenting + 'start-renting', renting).subscribe((value)=>{
+          console.log("PRE payment-a");
+          this.httpClient.post<Redirection>("http://localhost:9090/payment/pay", this.rent).subscribe((response) => {
+            console.log(response.url);
+            window.open(response.url, "_blank");
+            Swal.fire({
+              title: 'Success!',
+              text: 'Vehicle successfully rented!',
+              icon: 'success',
+              confirmButtonText: 'OK',
+              position: 'top-right'
+            });
+          })
           }, (error)=>{
             console.log(error);
           })

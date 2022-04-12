@@ -82,13 +82,7 @@ export class HomePageComponent implements OnInit {
   rentCar(vehicle: Vehicle): void {
     let renting = new Renting(vehicle);
      this.vehicleService.rentACar(renting);
-     Swal.fire({
-        title: 'Success!',
-        text: 'Vehicle successfully rented!',
-        icon: 'success',
-        confirmButtonText: 'OK',
-        position: 'top-right'
-      });
+     
      this.fetchRentedCars();
      (document.querySelector('#vehicle-details-modal') as HTMLElement).style.display = 'none';
      this.fetchRentedCars();
