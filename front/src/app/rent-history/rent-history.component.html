@@ -1,0 +1,30 @@
+<div class="home-page">
+    <div class="cover-photo">
+        <img class="img" src="https://vehicle-images-levi9.s3.amazonaws.com/images/cover5.jpg" />
+    </div>
+    <navbar></navbar> 
+    <div class="page">
+        <h1>Renting History</h1>
+        <div class="card">
+          <table class=" table table-striped table-rentings">
+          <thead>
+            <tr>
+              <th scope="col">Car</th>
+              <th scope="col">Start Address</th>
+              <th scope="col">End Address</th>
+              <th scope="col">Days</th>
+              <th scope="col">Total cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rent of rentingHistory">
+              <td> {{rent.vehicle.model}} </td>
+              <td> {{rent.startGarage.address.city}}, {{rent.startGarage.address.streetName}} {{rent.startGarage.address.streetNumber}}</td>
+              <td> {{rent.endGarage.address.city}}, {{rent.endGarage.address.streetName}} {{rent.endGarage.address.streetNumber}} </td>
+              <td> {{rent.durationInDays}} </td>
+              <td> {{rent.totalPrice}}e</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>  
+</div>

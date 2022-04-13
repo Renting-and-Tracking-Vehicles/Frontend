@@ -1,0 +1,64 @@
+mat-card {
+    transition: transform .5s ease;
+    transform: scale(1);
+    height: 440px;
+    width: 400px;
+    max-width: 600px;
+    margin: 2em auto;
+    text-align: center;
+    max-height: 600px;
+    position: absolute;
+    margin-left: 600px;
+    margin-top: 150px;
+    opacity: 0.8;
+    /* background-color: #fee1b1; */
+    background-color: white;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.phoneInput{
+    margin-top: 8px;
+}
+mat-card:hover{
+    transition: transform .5s ease;
+    transform: scale(1.2);
+    opacity:1;
+}
+.header {
+    text-align: center;
+}
+.full-width {
+    width: 80%;
+}
+.forgot-password{
+    padding-left: 0px;
+}
+.email-input {
+    padding-top: 10px;
+}
+.aLink {
+    float: right;
+    padding-right: 60px;
+    text-decoration: none;
+}
+.button-row {
+    padding-top: 25px;
+}
+.button-row a {
+    margin-right: 8px;
+    text-align: center;
+}
+.content-body {
+    min-height: 100%;
+    background-image: url('../../assets/images/profile4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat; 
+    display: block;
+}
+.buttons{
+    display: flex;
+    margin-left: 30%;
+    margin-right: 30%;
+    justify-content: space-between;
+}
+

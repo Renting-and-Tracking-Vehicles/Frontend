@@ -1,0 +1,49 @@
+.navbar {
+    margin-top: -45px;
+    height: 45px;
+    margin-right: 15%;
+    width: 100%;
+    background-color: rgba(19, 28, 37, 0.4);
+    padding-right: 20%;
+  }
+  .active-link {
+    background-color: rgba(25, 35, 46, 0.7);
+    height: 45px;
+    padding-top: 10px;
+  }
+  .renting{
+    display: flex;
+    align-items: center;
+    margin-right: 85%;
+    width: 50%;
+  }
+  .renting a{
+    width: 140px;
+  }  
+  .navigation{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 18%;
+    margin-right: 5%;
+    width: 100%;
+  }
+  .options {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 20%;
+  }
+  div > a{
+    font-size: 16px;
+    width: 150px;
+  }
+  .my-profile{
+    display: flex;
+    flex-direction: row;
+  }
+  .login{
+      margin-left: 35%;
+  }
+

@@ -1,0 +1,79 @@
+<div class="content-body">
+    <mat-card>
+        <mat-card-content>
+          <div class="header">
+            <P>Edit your profile</P>
+          </div>
+          <form (ngSubmit)="edit()" name="registerForm" [formGroup]="registerForm">
+            <div class="nameInput">
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input
+                    formControlName="name"
+                    autocomplete="off"
+                    matInput
+                    placeholder="Enter your name"
+                    [(ngModel)]="userModel.name" required
+                  />
+                  <mat-error *ngIf="!registerForm.controls['name'].valid">
+                      Required
+                    </mat-error>
+                </mat-form-field>
+              </div>
+    
+              <div class="surnameInput">
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Surname</mat-label>
+                  <input
+                    formControlName="surname"
+                    autocomplete="off"
+                    matInput
+                    placeholder="Enter your surname"
+                    [(ngModel)]="userModel.surname" required
+                  />
+                  <mat-error *ngIf="!registerForm.controls['surname'].valid">
+                      Required
+                    </mat-error>
+                </mat-form-field>
+              </div>
+            
+            
+            <div class="emailInput">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input
+                  formControlName="email"
+                  autocomplete="off"
+                  matInput
+                  placeholder="Enter email address"
+                  [(ngModel)]="userModel.email" required
+                />
+                <mat-error *ngIf="!registerForm.controls['email'].valid">
+                    Email is required!
+                  </mat-error>
+              </mat-form-field>
+            </div>
+    
+            <div class="phoneInput">
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Phone</mat-label>
+                  <input
+                    formControlName="phone"
+                    autocomplete="off"
+                    matInput
+                    placeholder="Enter your phone number" 
+                    [(ngModel)]="userModel.phone" required
+                  />
+                  <mat-error *ngIf="!registerForm.controls['phone'].valid">
+                      Required
+                    </mat-error>
+                </mat-form-field>
+              </div>
+            <div class="buttons">
+                <button mat-flat-button color="primary">Edit</button>
+                <button mat-stroked-button color="primary" (click)="cancel($event)">Cancel</button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div> 

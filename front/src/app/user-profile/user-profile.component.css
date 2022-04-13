@@ -1,0 +1,47 @@
+.row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+    height: 15%;
+    padding: 10px;
+    text-align: center;
+}
+.my-card{
+    width: 300px;
+    width: 300px;
+    margin-left: 40%;
+    margin-top: 2%;
+    opacity: 0.8;
+    border-radius: 10px;
+    
+}
+.main {
+    background-color: rgb(211, 222, 223);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+} 
+.cover-image{
+    width: 100%;
+    height: 200px;
+}
+.img{
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 50vh;
+}
+.pic {
+    width: 50px;
+    height: 50px;
+}
+.mat-cardd{
+    align-items: center;
+    justify-content: center;
+    margin-left: 25%;
+    height: 90%;
+}
