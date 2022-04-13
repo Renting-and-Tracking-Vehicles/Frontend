@@ -82,7 +82,6 @@ export class HomePageComponent implements OnInit {
   rentCar(vehicle: Vehicle): void {
     let renting = new Renting(vehicle);
      this.vehicleService.rentACar(renting);
-     
      this.fetchRentedCars();
      (document.querySelector('#vehicle-details-modal') as HTMLElement).style.display = 'none';
      this.fetchRentedCars();
